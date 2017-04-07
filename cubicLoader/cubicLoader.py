@@ -58,8 +58,8 @@ class ModelLoader:
         currentDir=os.path.dirname(os.path.abspath(__file__))
         config = configparser.ConfigParser()
         config.read(currentDir + "/config.ini")
-        modelJson = self.model.toJson(fStart, fEnd)
-        jsonData = simplejson.dumps(modelJson)
+        modelDict = self.model.toDict(fStart, fEnd)
+        jsonData = simplejson.dumps(modelDict)
         fd = open(config['Paths']['writePath'] + '/' + self.modelName + ".json", "w")
         fd.write(jsonData)
         fd.close

@@ -28,7 +28,7 @@ class Model:
             cubicGroup.loadCubes(groupCubes)
             self.groups.append(cubicGroup)
 
-    def toJson(self, fStart, fEnd):
+    def toDict(self, fStart, fEnd):
         scene = bpy.data.scenes[0]
 
         modelDict = dict()
@@ -39,7 +39,7 @@ class Model:
             frameDict = dict()
             groupsList = list()
             for frameGroup in self.groups:
-                groupDict = frameGroup.toJson()
+                groupDict = frameGroup.toDict()
                 groupsList.append(groupDict)
             frameDict["number"] = frameNum
             frameDict["groups"] = groupsList

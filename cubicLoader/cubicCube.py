@@ -18,10 +18,10 @@ class Cube:
     def setRot(self, rot):
         self.rot = rot
 
-    def setCol(self, colName):
-        self.colName = colName
+    def setColorName(self, colorName):
+        self.colorName = colorName
 
-    def toJson(self):
+    def toDict(self):
         cubeDict = dict()
 
         posDict=dict()
@@ -37,5 +37,5 @@ class Cube:
         cubeDict["name"] = self.name
         cubeDict["pos"] = posDict
         cubeDict["rot"] = rotDict
-        cubeDict["colName"] = self.colName
+        cubeDict["colorName"] = self.colorName
         return cubeDict

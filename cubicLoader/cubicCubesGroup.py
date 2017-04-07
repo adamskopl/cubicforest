@@ -22,14 +22,14 @@ class CubesGroup:
             cube = cubicCube.Cube(groupCube.name)
             cube.setPos(groupCube.location)
             cube.setRot(groupCube.rotation_euler)
-            cube.setCol(groupCube.data.materials[0].name)
+            cube.setColorName(groupCube.data.materials[0].name)
             self.cubes.append(cube)
 
-    def toJson(self):
+    def toDict(self):
         groupDict = dict()
         cubesList = list()
         for c in self.cubes:
-            cubeDict = c.toJson()
+            cubeDict = c.toDict()
             cubesList.append(cubeDict)
 
         groupDict["name"] = self.name
