@@ -2,6 +2,7 @@ import imp
 import bpy
 import cubicCubesGroup
 
+
 class Model:
     """
     Class defining CubicForest model.
@@ -15,7 +16,7 @@ class Model:
         # list of cubicCubesGroup.CubesGroup
         self.groups = list()
 
-    def loadGroups(self):
+    def load_groups(self):
         """
         Fill groups list with CubesGroup objects.
         """
@@ -25,10 +26,10 @@ class Model:
             groupName = sGroup.name
             groupCubes = sGroup.objects
             cubicGroup = cubicCubesGroup.CubesGroup(groupName)
-            cubicGroup.loadCubes(groupCubes)
+            cubicGroup.load_cubes(groupCubes)
             self.groups.append(cubicGroup)
 
-    def toDict(self, fStart, fEnd):
+    def to_dict(self, fStart, fEnd):
         scene = bpy.data.scenes[0]
 
         modelDict = dict()
@@ -39,7 +40,7 @@ class Model:
             frameDict = dict()
             groupsList = list()
             for frameGroup in self.groups:
-                groupDict = frameGroup.toDict()
+                groupDict = frameGroup.to_dict()
                 groupsList.append(groupDict)
             frameDict["number"] = frameNum
             frameDict["groups"] = groupsList
@@ -47,5 +48,5 @@ class Model:
 
         modelDict["name"] = self.name
         modelDict["frames"] = framesList
-        
+
         return modelDict

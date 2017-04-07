@@ -5,7 +5,7 @@ import configparser
 import cubicModel
 import os
 
-""" 
+"""
 Load and run this script in the Blender Console
 e.g.:
 
@@ -18,23 +18,24 @@ requirements:
 https://github.com/simplejson/simplejson
 """
 
+
 class ModelLoader:
-    """  
+    """
     Class loading groups and their objects(cubes) from a default scene
     into a Model class.
     """
     def __init__(self, modelName):
         self.modelName = modelName
 
-    def loadModel(self):
-        """ 
+    def load_model(self):
+        """
         Fill Model class with data from a default scene.
         """
         self.model = cubicModel.Model(self.modelName)
-        self.model.loadGroups()
+        self.model.load_groups()
 
-    def printModel(self, fStart, fEnd):
-        """ 
+    def print_model(self, fStart, fEnd):
+        """
         For frames in range of fStart and fEnd, print names of model's
         groups and their cubes (name+position).
         """
@@ -51,21 +52,23 @@ class ModelLoader:
                     print(gCube.name, "  ", gCube.pos)
             print("------------------------------------")
 
-    def saveModel(self, fStart, fEnd):
+    def save_model(self, fStart, fEnd):
         """
         x
         """
-        currentDir=os.path.dirname(os.path.abspath(__file__))
+        currentDir = os.path.dirname(os.path.abspath(__file__))
         config = configparser.ConfigParser()
         config.read(currentDir + "/config.ini")
-        modelDict = self.model.toDict(fStart, fEnd)
+        modelDict = self.model.to_dict(fStart, fEnd)
         jsonData = simplejson.dumps(modelDict)
-        fd = open(config['Paths']['writePath'] + '/' + self.modelName + ".json", "w")
+        fd = open(config['Paths']['writePath'] + '/' +
+                  self.modelName + ".json", "w")
         fd.write(jsonData)
         fd.close
-        
+
+
 def run(modelName, fStart=1, fEnd=1):
-    """ 
+    """
     Function for Blender Console. Invokes ModelLoader's loadModel()
     function.
     """
@@ -73,5 +76,5 @@ def run(modelName, fStart=1, fEnd=1):
     imp.reload(cubicModel)
 
     m = ModelLoader(modelName)
-    m.loadModel()
-    m.saveModel(fStart, fEnd)
+    m.load_model()
+    m.save_model(fStart, fEnd)

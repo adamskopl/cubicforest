@@ -1,5 +1,6 @@
 from mathutils import Vector, Euler
 
+
 class Cube:
     """
     Class defining model's cube.
@@ -12,24 +13,24 @@ class Cube:
         self.pos = Vector()
         self.rot = Euler()
 
-    def setPos(self, pos):
+    def set_pos(self, pos):
         self.pos = pos
 
-    def setRot(self, rot):
+    def set_rot(self, rot):
         self.rot = rot
 
-    def setColorName(self, colorName):
-        self.colorName = colorName
+    def set_color(self, color):
+        self.color = color
 
-    def toDict(self):
+    def to_dict(self):
         cubeDict = dict()
 
-        posDict=dict()
+        posDict = dict()
         posDict["x"] = self.pos.x
         posDict["y"] = self.pos.y
         posDict["z"] = self.pos.z
 
-        rotDict=dict()
+        rotDict = dict()
         rotDict["x"] = self.rot.x
         rotDict["y"] = self.rot.y
         rotDict["z"] = self.rot.z
@@ -37,5 +38,5 @@ class Cube:
         cubeDict["name"] = self.name
         cubeDict["pos"] = posDict
         cubeDict["rot"] = rotDict
-        cubeDict["colorName"] = self.colorName
+        cubeDict["color"] = self.color
         return cubeDict

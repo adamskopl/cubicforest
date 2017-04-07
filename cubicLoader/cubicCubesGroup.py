@@ -1,9 +1,10 @@
 import imp
 import cubicCube
 
+
 class CubesGroup:
     """
-    Class defining model's group of cubes.  
+    Class defining model's group of cubes.
 
     Blender's equivalent: Group.
     """
@@ -13,23 +14,23 @@ class CubesGroup:
         self.name = name
         # list of Cube elements
         self.cubes = list()
-        
-    def loadCubes(self, groupCubes):
+
+    def load_cubes(self, groupCubes):
         """
         Fill cubes list with objects from groupCubes list.
         """
         for groupCube in groupCubes:
             cube = cubicCube.Cube(groupCube.name)
-            cube.setPos(groupCube.location)
-            cube.setRot(groupCube.rotation_euler)
-            cube.setColorName(groupCube.data.materials[0].name)
+            cube.set_pos(groupCube.location)
+            cube.set_rot(groupCube.rotation_euler)
+            cube.set_color(groupCube.data.materials[0].name)
             self.cubes.append(cube)
 
-    def toDict(self):
+    def to_dict(self):
         groupDict = dict()
         cubesList = list()
         for c in self.cubes:
-            cubeDict = c.toDict()
+            cubeDict = c.to_dict()
             cubesList.append(cubeDict)
 
         groupDict["name"] = self.name
