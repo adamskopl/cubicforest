@@ -1,1 +1,2 @@
-console.log('app');
+import game from './phaser';
+import displayManager from './displayManager/displayManager';
