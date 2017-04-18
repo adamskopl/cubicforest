@@ -12,7 +12,7 @@ const preload = function preload() {
 const update = function update() {};
 const render = function render() {};
 
-export let phaserInit = displayM => {
+export const phaserInit = displayM => {
   if (initialized) {
     log.warn('already initialized');
     return;
@@ -35,4 +35,4 @@ export let phaserInit = displayM => {
   displayM.setGame(phaserGame);
 };
 
-export let phaser = phaserGame;
+export const phaser = phaserGame;
