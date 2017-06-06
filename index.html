@@ -7,5 +7,15 @@
 
 <body>
 
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script src="imports-bundle.js"></script>
+
+<script>
+  System.import('src-bundle/main.js').then(() => {
+    System.import('dist/src/main.js');
+  });
+</script>
+
 </body>
 </html>
